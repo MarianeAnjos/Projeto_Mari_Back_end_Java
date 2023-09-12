@@ -4,21 +4,23 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "produto")
+@Table(name = "loja")
+public class LojaModel {
 
-public class Produto {
+	// Chave PK do banco loja tabela loja
 
-	// Chave PK do banco loja tabela produto
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@OneToMany
 	private Long id;
 
+	@NotBlank(message = "O atributo descrição é obrigatorio!")
 	private String descricao;
-
-	private float custo;
 
 	public Long getId() {
 		return id;
@@ -34,14 +36,6 @@ public class Produto {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-
-	public float getCusto() {
-		return custo;
-	}
-
-	public void setCusto(float custo) {
-		this.custo = custo;
 	}
 
 }

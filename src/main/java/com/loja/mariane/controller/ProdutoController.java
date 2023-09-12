@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-import com.loja.mariane.model.Produto;
+import com.loja.mariane.model.ProdutoModel;
 import com.loja.mariane.repository.ProdutoRepository;
 
 import jakarta.validation.Valid;
@@ -35,24 +35,25 @@ public class ProdutoController {
 
 	// Pesquisa por todos
 	@GetMapping
-	public ResponseEntity<List<Produto>> getAll() {
+	public ResponseEntity<List<ProdutoModel>> getAll() {
 		return ResponseEntity.ok(produtoRepository.findAll());
 	}
 
+	// Criando novo produto
 	@PostMapping
-	public ResponseEntity<Produto> create(@Valid @RequestBody Produto produto) {
+	public ResponseEntity<ProdutoModel> create(@Valid @RequestBody ProdutoModel produto) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(produto));
 
 	}
 
 	// Pesquisa por ID
 	@GetMapping("/{id}")
-	public ResponseEntity<Produto> getbyId(@PathVariable Long id) {
+	public ResponseEntity<ProdutoModel> getbyId(@PathVariable Long id) {
 		return produtoRepository.findById(id).map(resposta -> ResponseEntity.ok(resposta))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 
 	}
-	
+
 	/*
 	 * // Pesquisa por Custo
 	 * 
@@ -67,26 +68,24 @@ public class ProdutoController {
 	public ResponseEntity<Object> getByDescricao(@PathVariable String descricao) {
 		return ResponseEntity.ok(produtoRepository.findAllByDescricaoContainingIgnoreCase(descricao));
 	}
-	
-	//Update por ID
+
+	// Update por ID
 	@PutMapping("/{id}")
-	public ResponseEntity<Object> update(@Valid @RequestBody Produto produto) {
+	public ResponseEntity<Object> update(@Valid @RequestBody ProdutoModel produto) {
 		return ResponseEntity.status(HttpStatus.OK).body(produtoRepository.save(produto));
 	}
-	
-	
-	//Apagar por ID
+
+	// Apagar por ID
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
-        Optional<Produto> produto = produtoRepository.findById(id);
-        
-        if(produto.isEmpty())
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        
-        produtoRepository.deleteById(id);
-        
-    }
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable Long id) {
+		Optional<ProdutoModel> produto = produtoRepository.findById(id);
+
+		if (produto.isEmpty())
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+
+		produtoRepository.deleteById(id);
+
+	}
 
 }
-
