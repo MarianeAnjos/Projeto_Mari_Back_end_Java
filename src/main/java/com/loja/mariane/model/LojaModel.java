@@ -16,7 +16,6 @@ public class LojaModel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@OneToMany
 	private Long id;
 
 	@NotBlank(message = "O atributo descrição é obrigatorio!")

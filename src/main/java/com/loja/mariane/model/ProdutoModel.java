@@ -16,7 +16,6 @@ public class ProdutoModel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@OneToMany
 	private Long id;
 
 	private String descricao;

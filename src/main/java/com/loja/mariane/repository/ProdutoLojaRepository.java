@@ -1,5 +1,12 @@
 package com.loja.mariane.repository;
 
-public interface ProdutoLojaRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.loja.mariane.model.ProdutoLojaModel;
+
+public interface ProdutoLojaRepository  extends JpaRepository<ProdutoLojaModel, Long> {
+	
+	
+	
+	
 }
