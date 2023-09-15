@@ -1,4 +1,4 @@
-package com.loja.mariane.model;
+package com.loja.mariane.resquest;
 
 public class ProdutoLojaRequest {
     private Long idproduto;

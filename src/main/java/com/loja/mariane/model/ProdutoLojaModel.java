@@ -25,6 +25,7 @@ public class ProdutoLojaModel {
 	private LojaModel loja;
 	
 	private float custo;
+	
 
 	public ProdutoLojaModel() {
 	}

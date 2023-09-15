@@ -11,18 +11,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.loja.mariane.model.ProdutoModel;
 import com.loja.mariane.model.LojaModel;
 import com.loja.mariane.model.ProdutoLojaModel;
-import com.loja.mariane.model.ProdutoLojaRequest;
+import com.loja.mariane.model.ProdutoModel;
 import com.loja.mariane.repository.LojaRepository;
 import com.loja.mariane.repository.ProdutoLojaRepository;
 import com.loja.mariane.repository.ProdutoRepository;
+import com.loja.mariane.resquest.ProdutoLojaRequest;
 
-import jakarta.validation.Valid;
+
 
 @RestController
 @RequestMapping("/produtoLoja")
@@ -30,15 +29,15 @@ import jakarta.validation.Valid;
 
 public class ProdutoLojaController {
 
-	// Injeção de dependencia
+	// Injeção de dependencia produto loja
 	@Autowired
 	private ProdutoLojaRepository produtoLojaRepository;
 
-	// Injeção de dependencia
+	// Injeção de dependencia produto
 	@Autowired
 	private ProdutoRepository produtoRepository;
 
-	// Injeção de dependencia
+	// Injeção de dependencia loja
 	@Autowired
 	private LojaRepository lojaRepository;
 
